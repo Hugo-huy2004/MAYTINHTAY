@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Máy Tính Tay Đơn Giản</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color: #f0f0f0;
+        }
+        input {
+            font-size: 24px;
+            padding: 10px;
+            width: 240px;
+            margin-bottom: 20px;
+            text-align: right;
+        }
+        button {
+            font-size: 18px;
+            padding: 20px;
+            margin: 5px;
+            width: 80px;
+        }
+        .button-row {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Máy Tính Tay</h1>
+    <input type="text" id="display" disabled>
+    <br>
+
+    <div class="button-row">
+        <button onclick="nhapSo('7')">7</button>
+        <button onclick="nhapSo('8')">8</button>
+        <button onclick="nhapSo('9')">9</button>
+        <button onclick="nhapSo('+')">+</button>
+    </div>
+    <div class="button-row">
+        <button onclick="nhapSo('4')">4</button>
+        <button onclick="nhapSo('5')">5</button>
+        <button onclick="nhapSo('6')">6</button>
+        <button onclick="nhapSo('-')">-</button>
+    </div>
+    <div class="button-row">
+        <button onclick="nhapSo('1')">1</button>
+        <button onclick="nhapSo('2')">2</button>
+        <button onclick="nhapSo('3')">3</button>
+        <button onclick="nhapSo('*')">*</button>
+    </div>
+    <div class="button-row">
+        <button onclick="nhapSo('0')">0</button>
+        <button onclick="nhapSo('.')">.</button>
+        <button onclick="tinhToan()">=</button>
+        <button onclick="nhapSo('/')">/</button>
+    </div>
+    <div class="button-row">
+        <button onclick="xoa()">C</button>
+    </div>
+
+    <script>
+        // Hàm để nhập số và phép tính
+        function nhapSo(num) {
+            let display = document.getElementById("display");
+            display.value += num;
+        }
+
+        // Hàm tính toán khi nhấn "="
+        function tinhToan() {
+            let display = document.getElementById("display");
+            try {
+                display.value = eval(display.value);
+            } catch (e) {
+                alert("Biểu thức không hợp lệ!");
+                display.value = '';
+            }
+        }
+
+        // Hàm xóa màn hình
+        function xoa() {
+            document.getElementById("display").value = '';
+        }
+    </script>
+</body>
+</html>
